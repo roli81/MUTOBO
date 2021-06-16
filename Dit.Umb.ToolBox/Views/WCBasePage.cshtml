@@ -1,8 +1,8 @@
-﻿ @inherits Umbraco.Web.Mvc.UmbracoViewPage<Dit.Umb.ToolBox.Models.PageModels.BasePage>
+﻿ @inherits Umbraco.Web.Mvc.UmbracoViewPage<Dit.Umb.Mutobo.PageModels.BasePage>
 @using System.Globalization
 @using ClientDependency.Core.Mvc
-@using Dit.Umb.ToolBox.Models.Configuration
-@using Dit.Umb.ToolBox.Models.Interfaces
+@using Dit.Umb.Mutobo.Configuration
+@using Dit.Umb.Mutobo.Interfaces
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
     Layout = null;
@@ -20,6 +20,7 @@
         Html.RequiresCss("~/web-components-cms-template/src/css/variablesWeb4MIndustry.css");
         Html.RequiresCss($"~/web-components-cms-template/src/css/misc.css");
         Html.RequiresCss($"~/web-components-cms-template/src/css/fonts.css");
+        Html.RequiresJs($"~/web-components-cms-template/wc-config.js?baseUrl=/web-components-cms-template/src/es/components/");
     }
 
     @Html.RenderCssHere()
@@ -47,9 +48,9 @@
     <p-general>
         @Html.Partial("~/Views/Partials/Header.cshtml", Model.HeaderConfiguration)
         @RenderBody()
-        @Html.Partial("~/Views/Partials/Footer.cshtml", Model.FooterConfiguration as Dit.Umb.ToolBox.Models.Configuration.FooterConfiguration)
+        @Html.Partial("~/Views/Partials/Footer.cshtml", Model.FooterConfiguration as Dit.Umb.Mutobo.Configuration.FooterConfiguration)
     </p-general>
 @Html.Action("Index", "WcRender")
-@RenderSection("CustomElementsDefine", required: false)
+@Html.RenderJsHere()
 </body>
 </html>
